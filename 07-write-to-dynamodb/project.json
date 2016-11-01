@@ -1,0 +1,9 @@
+
+{
+  "name": "dynamodb",
+  "description": "",
+  "memory": 128,
+  "timeout": 20,
+  "role": "arn:aws:iam::XXXXXXXXXX:role/XXXXXXXXXX",
+  "environment": {}
+}
