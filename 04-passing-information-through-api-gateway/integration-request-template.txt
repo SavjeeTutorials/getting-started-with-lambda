@@ -1,0 +1,4 @@
+{
+	"min": "$input.params('min')",
+	"max": "$input.params('max')"
+}
