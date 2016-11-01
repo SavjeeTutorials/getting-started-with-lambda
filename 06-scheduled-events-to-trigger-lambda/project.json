@@ -1,0 +1,12 @@
+
+{
+  "name": "scheduled-email",
+  "description": "",
+  "memory": 128,
+  "timeout": 20,
+  "role": "arn:aws:iam::XXXXXXXX:role/XXXXXXXXXXX",
+  "environment": {
+    "apiKey": "key-XXXXXXXXXXXXXXXXXXXX",
+    "domain": "XXXXXXXXXXXXXXX"
+  }
+}
