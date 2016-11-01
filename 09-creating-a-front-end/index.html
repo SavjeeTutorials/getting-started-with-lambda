@@ -1,0 +1,55 @@
+<html>
+    <head>
+        <!-- Not good practice! You should load jQuery at the end of the document. -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    </head>
+
+    <body>
+
+        <h1>Latest guestbook entries:</h1>
+        <div id="entries">
+            
+        </div>
+
+        <h1>New entry</h1>
+        <form>
+            <label for="msg">Message</label>
+            <textarea id="msg"></textarea>
+
+            <button id='submitButton'>Submit</button>
+        </form>
+
+
+        <script type="text/javascript">
+            var API_URL = 'https://xxxxxxxxxxxx.execute-api.eu-west-1.amazonaws.com/prod/entries';
+
+            $(document).ready(function(){
+                $.ajax({
+                    type: "GET",
+                    url: API_URL,
+                    success: function(data){
+                        $('#entries').html('');
+
+                        data.Items.forEach(function(guestbookEntry){
+                            $('#entries').append('<p>' + guestbookEntry.message + '</p>');
+                        });
+                    }
+                });
+            });
+
+            $('#submitButton').on('click', function(){
+                $.ajax({
+                    type: "POST",
+                    url: API_URL,
+                    data: JSON.stringify({ "message": $('#msg').val()}),
+                    contentType: "application/json",
+                    success: function(data){
+                        location.reload();
+                    }
+                });
+
+                return false;
+            });
+        </script>
+    </body>
+</html>
